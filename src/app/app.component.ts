@@ -1,34 +1,13 @@
 import {Component} from '@angular/core';
-import * as moment from 'moment';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
 @Component({
   moduleId: module.id,
+  directives: [ROUTER_DIRECTIVES],
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-  public remaining:any = {};
 
-  ngOnInit() {
-    this.updateRemaining();
-    setInterval(this.updateRemaining.bind(this), 1000);
-  }
-
-  updateRemaining() {
-
-    const target = moment('2016-09-15');
-    const now = moment();
-    const delta = moment.duration(target.diff(now));
-
-    this.remaining = {
-      months: delta.months(),
-      days: delta.days(),
-      hours: delta.hours(),
-      minutes: delta.minutes(),
-      seconds: delta.seconds()
-    }
-
-
-  }
 }
